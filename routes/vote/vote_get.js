@@ -21,8 +21,7 @@ module.exports = async function (fastify, opts) {
 }
   )
 
-
-  fastify.get('/:v_id', async function (request, reply) {
+  fastify.get('/:id', async function (request, reply) {
     
   const result = 
   {
