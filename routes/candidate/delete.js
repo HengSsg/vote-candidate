@@ -4,7 +4,7 @@ module.exports = async function (fastify, opts) {
   fastify.delete('/:id', async function (request, reply) {
       
     const result = {
-          "v_id": "투표아이디",
+          "c_id": "투표아이디",
           "title" : "미스터트롯"
     }
 
