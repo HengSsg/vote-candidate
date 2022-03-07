@@ -29,6 +29,6 @@ module.exports = async function (fastify, opts) {
     // the default value is false
     forceClose: true,
     
-    url: process.env.MONGOBD_URL
+    url: process.env.MONGODB_URL
   })
 }
