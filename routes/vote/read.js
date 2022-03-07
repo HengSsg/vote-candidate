@@ -24,5 +24,5 @@ module.exports = async function (fastify, opts) {
         .send(result)
   }
     )
-
+ 
 }
