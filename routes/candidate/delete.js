@@ -3,11 +3,13 @@
 module.exports = async function (fastify, opts) {
   fastify.delete('/:id', async function (request, reply) {
       
-    const result = {
-          "c_id": "투표아이디",
-          "title" : "미스터트롯"
-    }
+    const Candidate = this.mongo.db.collection('Candidate')
+    const id = this.mongo.ObjectId(request.params.id)
+    const query = {"_id" : id}
+    const result = await Candidate.deleteOne(query) 
 
+
+    
     reply
         .code(200)
         .header('content-type','application/json')

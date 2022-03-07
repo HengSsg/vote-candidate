@@ -2,20 +2,17 @@
 
 module.exports = async function (fastify, opts) {
   fastify.put('/:id', async function (request, reply) {
-      const result = [
-        {'v_id' : 3},
-        {'c_name' : '임영웅',
-        'count' : 4}, 
-        {'c_name' : '이희성',
-        'count' : 3},
-        {'c_name' : '주형우',
-        'count' : 6}
-      ]
+    const Candidate = this.mongo.db.collection('Candidate')
+    const filter = Candidate.params.id.body
+    const updatedoc = request.body
+    const result = await Candidate.updateOne(filter, updatedoc)
+
+
 
       reply
         .code(200)
         .header('content-type','application/json')
-        .send('업데이트완료')
+        .send(result)
     
 
   })
