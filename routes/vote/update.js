@@ -2,17 +2,17 @@
 
 module.exports = async function (fastify, opts) {
   fastify.put('/:id', async function (request, reply) {
-    const Candidate = this.mongo.db.collection('Candidate')
-    const filter = Candidate.params.id.body
-    const updatedoc = request.body
-    const result = await Candidate.updateOne(filter, updatedoc)
-
+    const Vote = this.mongo.db.collection('Vote')
+    const id = this.mongo.ObjectId(request.params.id)
+    const filter = {'_id' : id}
+    const replacement = request.body
+    const result = await Vote.findOneAndReplace(filter, replacement)
 
 
       reply
         .code(200)
         .header('content-type','application/json')
-        .send(result)
+        .send({'message' : '수정완료'})
     
 
   })
