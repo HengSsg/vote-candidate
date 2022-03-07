@@ -13,7 +13,7 @@ module.exports = async function (fastify, opts) {
     reply
         .code(200)
         .header('content-type','application/json')
-        .send(result)
+        .send('삭제되었습니다')
     
   })
 }
