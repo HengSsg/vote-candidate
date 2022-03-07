@@ -5,10 +5,19 @@ module.exports = async function (fastify, opts) {
     
   const vote = this.mongo.db.collection('Vote')
   const result = await vote.find({}).toArray()
-  reply
+    console.log('@@@@@@',result)
+  if(result.length===0){
+    reply
+        .code(404)
+        .header('content-type', 'application/json')
+        .send('Not Found!')
+    }
+    else{
+      reply
       .code(200)
       .header('content-type', 'application/json')
       .send(result)
+    }
 }
   )
 
@@ -18,10 +27,18 @@ module.exports = async function (fastify, opts) {
     const id = this.mongo.ObjectId(request.params.id)
     const result = await vote.findOne(id, vote)
 
+    if(result===null){
     reply
-        .code(200)
+        .code(404)
         .header('content-type', 'application/json')
-        .send(result)
+        .send('Not Found!')
+    }
+    else{
+      reply
+      .code(200)
+      .header('content-type', 'application/json')
+      .send(result)
+    }
   }
     )
  
