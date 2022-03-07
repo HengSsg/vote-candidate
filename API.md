@@ -111,7 +111,7 @@ c_id : 5
 |PUT   |/candidate/:c_id | 사용자가 특정 투표의 특정 후보를 투표함|200
 
 ```
-req
+요청
 {
       v_id: 3,
       candidate_list: 
@@ -121,26 +121,26 @@ req
       count : 1
 }
 }
-res 200
+응답 200
 {c_name: 임영웅}
 ```
 |Method|Endpoint|Desc|성공시 응답|
 |------|--------|-----|---|
 |PUT   |/vote/:v_id | 관리자가 특정 투표의 내용을 수정|200
 ```
-req
+요청
 {
 v_id : 3
 title : 미스터트롯
 }
-res 200
+응답 200
 {message : 수정완료}
 ```
 |Method|Endpoint|Desc|성공시 응답|
 |------|--------|-----|---|
 |DELETE   |/vote/:v_id | 관리자가 특정 투표를 삭제|200
 ```
-res 200
+응답 200
 {
   v_id: {투표아이디},
   title: 미스터트롯
@@ -151,7 +151,7 @@ res 200
 |------|--------|-----|---|
 |DELETE   |/candidate/:c_id | 관리자가 특정 후보자의 정보를 삭제|200
 ```
-res 200
+응답 200
 {
  c_id: {후보자 아이디},
  c_name: 임영웅
