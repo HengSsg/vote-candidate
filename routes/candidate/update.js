@@ -7,8 +7,8 @@ module.exports = async function (fastify, opts) {
   
     const Candidate = this.mongo.db.collection('Candidate')
     const result = await Candidate.findOne(request.params.id, Candidate)
-    result.candidate_list.count = result.candidate_list.count + 1
-    
+    Candidate.replaceOne(result.candidate_list.count, result.candidate_list.count + 1)
+
     reply
         .code(200)
         .header("Content-Type", "application/json")
