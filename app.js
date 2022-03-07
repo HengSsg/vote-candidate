@@ -1,11 +1,8 @@
 'use strict'
 
-require('dotenv').config()
-console.log(process.env.MONGODB_ID, process.env.MONGODB_PASSWORD)
-
 const path = require('path')
 const AutoLoad = require('fastify-autoload')
-
+require('dotenv').config()
 
 module.exports = async function (fastify, opts) {
   fastify.register(AutoLoad, {
@@ -24,7 +21,7 @@ module.exports = async function (fastify, opts) {
   fastify.register(require('fastify-mongodb'), {
     forceClose: true,
     
-    url: 'mongodb+srv://' + id + ':' + password + '@cluster0.gcslu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+    url: `mongodb+srv://${id}:${password}@cluster0.liof4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
   })
 }
 

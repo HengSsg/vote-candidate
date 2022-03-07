@@ -1,19 +1,13 @@
 'use strict'
 
 module.exports = async function (fastify, opts) {
-    fastify.get('/:id', async function (request, reply) {
-
-        const result = {
-            'c_name' : '이호용',
-            'image' : '이미지',
-            'desc' : '설명'
-        }
-      
+    fastify.get('/c_id', async function(request, reply) {
+        const candiates = this.mongo.db.collection('candidate')
+        const result = await candidate.find({}).toArray()
 
         reply
             .code(200)
-            .header('content-type', 'application/json')
+            .header('Content-Type', 'application/json')
             .send(result)
     })
-  }
-  
+}
