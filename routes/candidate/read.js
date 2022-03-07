@@ -2,7 +2,7 @@
 
 module.exports = async function (fastify, opts) {
     fastify.get('/', async function(request, reply){
-        const candiates = this.mongo.db.collection('candidate')
+        const candiates = this.mongo.db.collection('Candidate')
         const result = await candiates.find({}).toArray()
 
         reply
@@ -12,7 +12,7 @@ module.exports = async function (fastify, opts) {
     })
     
     fastify.get('/:id', async function(request, reply) {
-        const candiates = this.mongo.db.collection('candidate')
+        const candiates = this.mongo.db.collection('Candidate')
         const c_id = this.mongo.ObjectId(request.params.id)
         const result = await candiates.findOne(c_id, candiates)
 
