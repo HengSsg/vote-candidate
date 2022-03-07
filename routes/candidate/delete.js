@@ -13,6 +13,7 @@ module.exports = async function (fastify, opts) {
         .code(200)
         .header('content-type','application/json')
         .send({value:result.value,ok:result.ok})
+
     
   })
 }

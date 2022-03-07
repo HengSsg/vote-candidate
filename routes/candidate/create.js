@@ -1,5 +1,6 @@
 module.exports = async function (fastify, opts) {
-    fastify.post('/', async function (request, reply) {
+  //관리자가 후보자 정보를 등록함.
+  fastify.post('/', async function (request, reply) {
     
      const Candidate = this.mongo.db.collection('Candidate')
      const body = request.body
