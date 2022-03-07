@@ -1,11 +1,7 @@
 'use strict'
 
-require('dotenv').config()
-console.log(process.env.MONGODB_ENDPOINT) // remove this after you've confirmed it working
-
 const path = require('path')
 const AutoLoad = require('fastify-autoload')
-const { ObjectId } = require('fastify-mongodb')
 
 module.exports = async function (fastify, opts) {
   // Place here your custom code!
@@ -27,17 +23,17 @@ module.exports = async function (fastify, opts) {
     options: Object.assign({}, opts)
   })
 
-const id = process.env.MONGODB_ID
-const pw = process.env.MONGODB_PASSWORD
+  const id = process.env.MONGODB_ID
+  const password = process.env.MONGODB_PASSWORD
 
-fastify.register(require('fastify-mongodb'), {
-  // force to close the mongodb connection when app stopped
-  // the default value is false
-  forceClose: true,
-  
-  url: `mongodb+srv://${id}:${pw}@cluster0.tnbnq.mongodb.net/hengsgg?retryWrites=true&w=majority`
-})
-
+  fastify.register(require('fastify-mongodb'), {
+    // force to close the mongodb connection when app stopped
+    // the default value is false
+    forceClose: true,
+    
+    url: 'mongodb+srv://' + id + ':' + password + '@cluster0.gcslu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+  })
 }
+
 
 
